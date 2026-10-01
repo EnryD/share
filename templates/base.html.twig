@@ -20,7 +20,7 @@
         <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
         {% endif %}
     </head>
-    <body>
+    <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{path('app_base')}}">Share</a>
@@ -65,5 +65,13 @@
 
         
         {% block body %}{% endblock %}
+    <footer class="bg-primary text-center py-3 mt-auto" data-bs-theme="dark">
+        <div class="container">
+            <a class="text-white text-decoration-none mx-2" href="{{path('app_a_propos')}}">À propos</a>
+            <a class="text-white text-decoration-none mx-2" href="{{path('app_contact')}}">Contact</a>
+            <a class="text-white text-decoration-none mx-2" href="{{path('app_mentions_legales')}}">Mentions légales</a>
+            <p class="text-white-50 mb-0 mt-2">&copy; {{ 'now'|date('Y') }} Share - Tous droits réservés</p>
+        </div>
+    </footer>
     </body>
 </html>
