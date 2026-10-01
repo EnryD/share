@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}À propos{% endblock %}
+
+{% block body %}
+<h1 class="text-center text-primary mt-4 pt-4 display-3 fw-bold">À propos</h1>
+<h2 class="text-center text-secondary mb-4 pb-4">Qu'est-ce que Share ?</h2>
+
+<div class="container mb-5">
+
+    <div class="row text-center">
+        <div class="col-md-4 mb-3">
+            <div class="card border-primary h-100">
+                <div class="card-body">
+                    <h2><i class="bi bi-cloud-arrow-up text-danger"></i></h2>
+                    <h4 class="card-title">Déposer</h4>
+                    <p class="card-text">Envoyez vos fichiers en ligne en quelques clics.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card border-primary h-100">
+                <div class="card-body">
+                    <h2><i class="bi bi-folder text-secondary"></i></h2>
+                    <h4 class="card-title">Ranger</h4>
+                    <p class="card-text">Retrouvez vos fichiers rangés dans des dossiers.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card border-primary h-100">
+                <div class="card-body">
+                    <h2><i class="bi bi-cloud-arrow-down text-warning"></i></h2>
+                    <h4 class="card-title">Partager</h4>
+                    <p class="card-text">Partagez vos fichiers et téléchargez-les où vous voulez.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card border-secondary mt-4">
+        <div class="card-header"><i class="bi bi-info-circle"></i> Le projet</div>
+        <div class="card-body">
+            <p>Share est un projet réalisé en formation pour apprendre à créer un site avec Symfony.</p>
+            <p>Technologies utilisées :</p>
+            <ul>
+                <li>Symfony 6.4 (PHP)</li>
+                <li>Twig</li>
+                <li>Bootstrap 5 avec le thème Bootswatch Vapor</li>
+                <li>Bootstrap Icons</li>
+            </ul>
+            <a href="{{path('app_contact')}}" class="btn btn-primary"><i class="bi bi-envelope"></i> Nous contacter</a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

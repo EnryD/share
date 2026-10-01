@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Mentions légales{% endblock %}
+
+{% block body %}
+<h1 class="text-center text-primary mt-4 pt-4 display-3 fw-bold">Mentions légales</h1>
+<h2 class="text-center text-secondary mb-4 pb-4">Les informations sur le site</h2>
+
+<div class="container mb-5" style="max-width: 900px;">
+
+    <div class="card border-primary mb-3">
+        <div class="card-header"><i class="bi bi-person"></i> Éditeur du site</div>
+        <div class="card-body">
+            <p>Nom : [Votre prénom et votre nom]</p>
+            <p>E-mail : [Votre adresse e-mail]</p>
+            <p class="mb-0">Directeur de la publication : [Votre prénom et votre nom]</p>
+        </div>
+    </div>
+
+    <div class="card border-primary mb-3">
+        <div class="card-header"><i class="bi bi-hdd-network"></i> Hébergement</div>
+        <div class="card-body">
+            <p>Hébergeur : [Nom de l'hébergeur]</p>
+            <p>Adresse : [Adresse de l'hébergeur]</p>
+            <p class="mb-0">Téléphone : [Téléphone de l'hébergeur]</p>
+        </div>
+    </div>
+
+    <div class="card border-primary mb-3">
+        <div class="card-header"><i class="bi bi-c-circle"></i> Propriété intellectuelle</div>
+        <div class="card-body">
+            <p class="mb-0">Les textes et le code de ce site appartiennent à leur auteur. Bootstrap, le thème Bootswatch et Bootstrap Icons sont utilisés sous licence MIT.</p>
+        </div>
+    </div>
+
+    <div class="card border-primary mb-3">
+        <div class="card-header"><i class="bi bi-shield-lock"></i> Données personnelles</div>
+        <div class="card-body">
+            <p>Les informations envoyées avec le formulaire de contact (nom, e-mail, message) servent uniquement à vous répondre. Elles ne sont ni vendues ni données à quelqu'un d'autre.</p>
+            <p class="mb-0">Vous pouvez demander à les voir, les corriger ou les supprimer en écrivant à l'éditeur du site.</p>
+        </div>
+    </div>
+
+    <div class="card border-primary mb-3">
+        <div class="card-header"><i class="bi bi-cookie"></i> Cookies</div>
+        <div class="card-body">
+            <p class="mb-0">Ce site n'utilise pas de cookies de publicité ni de suivi.</p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
