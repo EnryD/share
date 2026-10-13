@@ -8,6 +8,7 @@
         <div class="col-10">
             <h1 class="text-primary">Ajouter un fichier</h1>
             <p>Le fichier doit déjà être dans le dossier public/fichiers du projet.</p>
+            <p>Pas de catégorie dans la liste ? <a href="{{ path('app_categories') }}">Créer une catégorie</a></p>
             {{ form(form) }}
             <a href="{{ path('app_bibliotheque') }}">Retour à la bibliothèque</a>
         </div>

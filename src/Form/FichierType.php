@@ -21,6 +21,8 @@ class FichierType extends AbstractType
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'nom',
+                'label' => 'Catégorie',
+                'placeholder' => 'Choisir une catégorie',
                 'attr'=>['class'=>'form-select'],
                 'label_attr' => ['class' => 'form-label'],
                 'row_attr' => ['class' => 'mb-3'],
