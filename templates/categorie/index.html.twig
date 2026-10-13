@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégories - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <h1 class="text-primary">Catégories</h1>
+            <div class="row">
+                <div class="col-md-5">
+                    {{ form(form) }}
+                </div>
+                <div class="col-md-7">
+                    <ul class="list-group">
+                        {% for categorie in categories %}
+                        <li class="list-group-item">
+                            {{ categorie.nom }}
+                            <span class="badge bg-primary">{{ categorie.fichiers|length }} fichier(s)</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
