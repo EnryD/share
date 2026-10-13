@@ -8,16 +8,30 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Form\FichierType;
 use App\Entity\Fichier;
+use App\Entity\Categorie;
 use App\Repository\FichierRepository;
+use App\Repository\CategorieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 final class FichierController extends AbstractController
 {
     #[Route('/bibliotheque', name: 'app_bibliotheque')]
-    public function index(FichierRepository $fichierRepository): Response
+    public function index(FichierRepository $fichierRepository, CategorieRepository $categorieRepository): Response
     {
         return $this->render('fichier/index.html.twig', [
             'fichiers' => $fichierRepository->findAll(),
+            'categories' => $categorieRepository->findAll(),
+            'categorieActive' => null,
+        ]);
+    }
+
+    #[Route('/bibliotheque/categorie/{id}', name: 'app_bibliotheque_categorie')]
+    public function parCategorie(Categorie $categorie, FichierRepository $fichierRepository, CategorieRepository $categorieRepository): Response
+    {
+        return $this->render('fichier/index.html.twig', [
+            'fichiers' => $fichierRepository->findBy(['categorie' => $categorie]),
+            'categories' => $categorieRepository->findAll(),
+            'categorieActive' => $categorie,
         ]);
     }
 

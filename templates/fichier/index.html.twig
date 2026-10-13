@@ -8,6 +8,15 @@
         <div class="col-10">
             <h1 class="text-primary">Bibliothèque</h1>
             <a class="btn btn-primary" href="{{ path('app_fichier_ajouter') }}">Ajouter un fichier</a>
+            <div>
+                <a class="btn btn-sm btn-outline-primary" href="{{ path('app_bibliotheque') }}">Toutes</a>
+                {% for categorie in categories %}
+                <a class="btn btn-sm btn-outline-primary" href="{{ path('app_bibliotheque_categorie', {id: categorie.id}) }}">{{ categorie.nom }}</a>
+                {% endfor %}
+            </div>
+            {% if categorieActive %}
+            <h2>Catégorie : {{ categorieActive.nom }}</h2>
+            {% endif %}
             <table class="table table-hover">
                 <thead>
                     <tr>
