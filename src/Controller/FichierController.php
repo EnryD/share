@@ -8,15 +8,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Form\FichierType;
 use App\Entity\Fichier;
+use App\Repository\FichierRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 final class FichierController extends AbstractController
 {
     #[Route('/bibliotheque', name: 'app_bibliotheque')]
-    public function index(): Response
+    public function index(FichierRepository $fichierRepository): Response
     {
         return $this->render('fichier/index.html.twig', [
-            'controller_name' => 'FichierController',
+            'fichiers' => $fichierRepository->findAll(),
         ]);
     }
 
