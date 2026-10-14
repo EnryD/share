@@ -44,10 +44,19 @@ final class FichierController extends AbstractController
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid())
             {
-                $em->persist($fichier);
-                $em->flush();
-                $this->addFlash('notice', 'Fichier ajouté à la bibliothèque');
-                return $this->redirectToRoute('app_bibliotheque');
+                $fichierEnvoye = $form->get('fichier')->getData();
+                $extension = strtolower($fichierEnvoye->getClientOriginalExtension());
+                if($fichierEnvoye->isValid() && ($extension == 'pdf' || $extension == 'txt' || $extension == 'doc' || $extension == 'docx' || $extension == 'odt' || $extension == 'png' || $extension == 'jpg' || $extension == 'jpeg'))
+                {
+                    $nomFichier = $fichierEnvoye->getClientOriginalName();
+                    $fichierEnvoye->move($this->getParameter('kernel.project_dir').'/public/fichiers', $nomFichier);
+                    $fichier->setNomFichier($nomFichier);
+                    $em->persist($fichier);
+                    $em->flush();
+                    $this->addFlash('notice', 'Fichier ajouté à la bibliothèque');
+                    return $this->redirectToRoute('app_bibliotheque');
+                }
+                $this->addFlash('notice', 'Fichier refusé : type non autorisé ou trop gros');
             }
         }
         return $this->render('fichier/ajouter.html.twig', [

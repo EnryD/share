@@ -7,7 +7,8 @@
     <div class="row justify-content-center">
         <div class="col-10">
             <h1 class="text-primary">Ajouter un fichier</h1>
-            <p>Le fichier doit déjà être dans le dossier public/fichiers du projet.</p>
+            <p>Choisissez un fichier sur votre ordinateur : il sera envoyé dans le dossier public/fichiers du serveur.</p>
+            <p>Types acceptés : pdf, txt, doc, docx, odt, png, jpg (2 Mo maximum).</p>
             <p>Pas de catégorie dans la liste ? <a href="{{ path('app_categories') }}">Créer une catégorie</a></p>
             {{ form(form) }}
             <a href="{{ path('app_bibliotheque') }}">Retour à la bibliothèque</a>

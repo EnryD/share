@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class FichierType extends AbstractType
@@ -17,7 +18,7 @@ class FichierType extends AbstractType
     {
         $builder
             ->add('nom',TextType::class, ['label'=>'Nom affiché', 'attr'=>['class'=>'form-control'], 'label_attr' => ['class' => 'form-label'], 'row_attr' => ['class' => 'mb-3']])
-            ->add('nomFichier',TextType::class, ['label'=>'Nom du fichier dans public/fichiers', 'attr'=>['class'=>'form-control'], 'label_attr' => ['class' => 'form-label'], 'row_attr' => ['class' => 'mb-3']])
+            ->add('fichier',FileType::class, ['label'=>'Fichier à envoyer', 'mapped'=>false, 'attr'=>['class'=>'form-control'], 'label_attr' => ['class' => 'form-label'], 'row_attr' => ['class' => 'mb-3']])
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'nom',
