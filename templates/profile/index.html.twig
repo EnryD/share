@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{%block title %}{{parent()}}Mon profil{%endblock%}
+
+{%block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-10 text-primary">
+            <h1 class="text-center text-primary mt-4 pt-4 display-3 fw-bold">Mon profil</h1>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 p-4 text-primary">
+                    <ul class="list-group">
+                        <li class="list-group-item">Prénom : {{ app.user.prenom }}</li>
+                        <li class="list-group-item">Nom : {{ app.user.nom }}</li>
+                        <li class="list-group-item">Rôle :
+                            {% if 'ROLE_ADMIN' in app.user.roles %}Administrateur
+                            {% elseif 'ROLE_MOD' in app.user.roles %}Modérateur
+                            {% else %}Utilisateur{% endif %}
+                        </li>
+                        <li class="list-group-item">Inscrit le :
+                            {% if app.user.dateInscription %}{{ app.user.dateInscription | date('d/m/Y') }}
+                            {% else %}non renseignée{% endif %}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
