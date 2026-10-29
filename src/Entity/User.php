@@ -33,6 +33,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $dateInscription = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -101,5 +104,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials(): void
     {
         // @deprecated, to be removed when upgrading to Symfony 8
+    }
+
+    public function getDateInscription(): ?\DateTimeImmutable
+    {
+        return $this->dateInscription;
+    }
+
+    public function setDateInscription(?\DateTimeImmutable $dateInscription): static
+    {
+        $this->dateInscription = $dateInscription;
+
+        return $this;
     }
 }
