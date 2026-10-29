@@ -16,6 +16,7 @@
                                 <tr>
                                     <th scope="col">Adresse e-mail</th>
                                     <th scope="col">Date d'inscription</th>
+                                    <th scope="col">Rôle</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,6 +28,15 @@
                                             {{ utilisateur.dateInscription | date('d/m/Y H:i') }}
                                         {% else %}
                                             Non renseignée
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if 'ROLE_ADMIN' in utilisateur.roles %}
+                                            <span class="badge bg-danger">Administrateur</span>
+                                        {% elseif 'ROLE_MOD' in utilisateur.roles %}
+                                            <span class="badge bg-warning">Modérateur</span>
+                                        {% else %}
+                                            <span class="badge bg-secondary">Utilisateur</span>
                                         {% endif %}
                                     </td>
                                 </tr>
