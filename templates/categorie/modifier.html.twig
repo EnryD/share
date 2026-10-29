@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Modifier une catégorie{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-10 text-primary">
+            <h1 class="text-center text-primary mt-4 pt-4 display-3 fw-bold">Modifier la catégorie : {{ categorie.nom }}</h1>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6">
+                    {{ form_start(form) }}
+                    {{ form_row(form.nom) }}
+                    {{ form_row(form.ajouter, {label: 'Modifier'}) }}
+                    {{ form_end(form) }}
+                    <a href="{{ path('app_liste_categories') }}">Retour à la liste des catégories</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

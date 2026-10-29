@@ -35,7 +35,7 @@ final class FichierController extends AbstractController
         ]);
     }
 
-    #[Route('/bibliotheque/ajouter', name: 'app_fichier_ajouter')]
+    #[Route('/private/bibliotheque/ajouter', name: 'app_fichier_ajouter')]
     public function ajouter(Request $request, EntityManagerInterface $em): Response
     {
         $fichier = new Fichier();

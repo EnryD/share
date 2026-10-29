@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Connexion{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-10 text-primary">
+            <h1 class="text-center text-primary mt-4 pt-4 display-3 fw-bold">Connexion</h1>
+            <h2 class="text-center text-secondary mb-4 pb-4">Connectez-vous à votre compte</h2>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 p-4 text-primary">
+                    <form method="post">
+                        {% if error %}
+                            <div class="alert alert-danger text-center mt-4">Adresse e-mail ou mot de passe incorrect.</div>
+                        {% endif %}
+
+                        {% if app.user %}
+                            <div class="alert alert-info text-center mt-4">
+                                Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">se déconnecter</a>
+                            </div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <label for="inputEmail" class="form-label text-primary mt-4">Adresse e-mail</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputPassword" class="form-label text-primary mt-4">Mot de passe</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                        </div>
+                        <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+
+                        <div class="form-check mt-4 mb-3">
+                            <input type="checkbox" name="_remember_me" id="rememberMe" class="form-check-input">
+                            <label for="rememberMe" class="form-check-label text-primary">Se souvenir de moi</label>
+                        </div>
+
+                        <div class="text-center mt-4 mb-4">
+                            <button type="submit" class="btn btn-lg btn-primary">Se connecter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

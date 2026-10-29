@@ -17,6 +17,7 @@
                         <li class="list-group-item">
                             {{ categorie.nom }}
                             <span class="badge bg-primary">{{ categorie.fichiers|length }} fichier(s)</span>
+                            <a href="{{ path('app_categorie_modifier', {id: categorie.id}) }}"><i class="bi bi-pencil-square"></i></a>
                         </li>
                         {% endfor %}
                     </ul>

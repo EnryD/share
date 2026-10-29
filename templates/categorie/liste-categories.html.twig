@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Liste des catégories{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-10 text-primary">
+            <h1 class="text-center text-primary mt-4 pt-4 display-3 fw-bold">Liste des catégories</h1>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 p-4 m-0 text-primary">
+                    {{ form_start(form) }}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">Fichiers</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for categorie in categories %}
+                                    <tr class="{{ cycle(['table-primary', 'table-secondary'], loop.index0) }}">
+                                        <td>{{ form_widget(form.categories[categorie.id], {attr: {class: 'form-check-input'}}) }}</td>
+                                        <td>{{ categorie.id }}</td>
+                                        <td>{{ categorie.nom }}</td>
+                                        <td>{{ categorie.fichiers | length }}</td>
+                                        <td>
+                                            <a href="{{ path('app_categorie_modifier', {id: categorie.id}) }}" title="Modifier"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="{{ path('app_categorie_supprimer', {id: categorie.id}) }}" class="btn btn-sm btn-danger ms-2" title="Supprimer"><i class="bi bi-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        {{ form_widget(form.supprimer) }}
+                    {{ form_end(form, {render_rest: false}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
